@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import getCountries from '../../redux/thunk/countries';
 import Header from '../Header';
 import CountryItem from './CountryItem';
 
 const Countries = () => {
   const { countries, totalTodayConfirmed } = useSelector((state) => state.countries);
+  const [countriesToShow, setCountriesToShow] = useState({});
   let backgroudColorForCountry = '#dc4782';
 
   const dispatch = useDispatch();
@@ -14,15 +15,35 @@ const Countries = () => {
     dispatch(getCountries());
   }, []);
 
+  useEffect(() => {
+    setCountriesToShow(countries);
+  }, [countries]);
+
+  const handleSearch = (e) => {
+    let { value } = e.target;
+    const dumpObject = {};
+    Object.assign(dumpObject, countries);
+    if (value !== '') {
+      value = value[0].toUpperCase() + value.slice(1, value.length);
+      const deletedKeys = Object.keys(dumpObject).filter((key) => !key.includes(value));
+      for (let i = 0; i < deletedKeys.length; i += 1) {
+        delete dumpObject[deletedKeys[i]];
+      }
+      setCountriesToShow(dumpObject);
+    } else {
+      setCountriesToShow(countries);
+    }
+  };
+
   return (
     <>
       <Header page="countries" />
-      {(countries === undefined || totalTodayConfirmed === undefined) && (
+      {(countriesToShow === undefined || totalTodayConfirmed === undefined) && (
         <div className="loading">
           <div className="loader" />
         </div>
       )}
-      {!(countries === undefined || totalTodayConfirmed === undefined) && (
+      {!(countriesToShow === undefined || totalTodayConfirmed === undefined) && (
         <div>
           <div className="total-countries-div">
             <i className="fas fa-globe-americas fa-5x" />
@@ -32,10 +53,11 @@ const Countries = () => {
             </div>
           </div>
           <div className="cases-by-countries">
-            CASES BY COUNTRIES
+            <p>CASES BY COUNTRIES</p>
+            <input type="text" onChange={handleSearch} placeholder="Search" />
           </div>
           <div className="countries">
-            {Object.keys(countries).map((country, index) => {
+            {Object.keys(countriesToShow).map((country, index) => {
               if ((index + 1) % 2 === 0) {
                 if (backgroudColorForCountry === '#dc4782') {
                   backgroudColorForCountry = '#cf4479';

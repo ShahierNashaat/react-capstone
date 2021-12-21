@@ -64,6 +64,19 @@ nav .fa-cog {
   font-size: 15px;
   font-weight: bold;
   background-color: var(--second-color);
+  display: flex;
+  justify-content: space-between;
+}
+
+.cases-by-countries p {
+  margin: 0;
+}
+
+.cases-by-countries input {
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  padding: 0 5px;
 }
 
 .loading {
@@ -92,11 +105,13 @@ nav .fa-cog {
   display: flex;
   flex-wrap: wrap;
   background-color: var(--first-color);
+  min-height: calc(100vh - 211px);
 }
 
 .countries a {
   width: 50%;
   text-decoration: none;
+  height: 200px;
 }
 
 .countries .country {
