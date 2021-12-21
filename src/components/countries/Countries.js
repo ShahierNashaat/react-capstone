@@ -1,4 +1,6 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import getCountries from '../../redux/thunk/countries';
 import Header from '../Header';
 import CountryItem from './CountryItem';
 
@@ -6,13 +8,15 @@ const Countries = () => {
   const { countries, totalTodayConfirmed } = useSelector((state) => state.countries);
   let backgroudColorForCountry = '#dc4782';
 
-  if (countries === undefined || totalTodayConfirmed === undefined) {
-    return (<div />);
-  }
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCountries());
+  }, []);
 
   return (
     <>
-      <Header />
+      <Header page="countries" />
       {(countries === undefined || totalTodayConfirmed === undefined) && (
         <div className="loading">
           <div className="loader" />

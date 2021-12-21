@@ -22,18 +22,21 @@ nav div {
   gap: 10px;
 }
 
-.total-countries-div {
+.total-countries-div,
+.total-regions-div {
   display: flex;
   justify-content: space-around;
   background-color: var(--first-color);
   padding: 30px 0;
 }
 
-.total-countries-div i {
+.total-countries-div i,
+.total-regions-div i {
   color: var(--third-color);
 }
 
-.total-countries-div div {
+.total-countries-div div,
+.total-regions-div div {
   align-self: flex-end;
   display: flex;
   flex-direction: column;
@@ -42,11 +45,13 @@ nav div {
   color: white;
 }
 
-.total-countries-div div span:nth-child(2) {
+.total-countries-div div span:nth-child(2),
+.total-regions-div div span:nth-child(2) {
   font-size: 15px;
 }
 
-.cases-by-countries {
+.cases-by-countries,
+.cases-by-regions {
   padding: 5px 10px;
   color: white;
   font-size: 15px;
@@ -56,7 +61,7 @@ nav div {
 
 .loading {
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 41px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -79,6 +84,7 @@ nav div {
 .countries {
   display: flex;
   flex-wrap: wrap;
+  background-color: var(--first-color);
 }
 
 .countries a {
@@ -96,6 +102,18 @@ nav div {
   position: relative;
 }
 
+.countries .country i {
+  color: var(--third-color);
+}
+
+.regions div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10px;
+  color: white;
+}
+
 .countries .country div {
   position: absolute;
   bottom: 5px;
@@ -105,6 +123,45 @@ nav div {
   text-align: right;
 }
 
+.regions div span:first-child {
+  font-weight: bold;
+}
+
 .countries .country div span:first-child {
   font-weight: bold;
+}
+
+.countries .country .fa-arrow-circle-right {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  color: white;
+}
+
+.regions {
+  background-color: var(--first-color);
+  width: 100%;
+  height: calc(100vh - 211px);
+}
+
+.regions .no-regions {
+  width: 100%;
+  height: calc(100vh - 211px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.regions .no-regions p {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.regions div:nth-child(odd) {
+  background-color: #eb4b8a;
+}
+
+.regions div:nth-child(even) {
+  background-color: #d1447a;
 }

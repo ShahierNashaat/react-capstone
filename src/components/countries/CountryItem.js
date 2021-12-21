@@ -12,6 +12,7 @@ const CountryItem = (props) => {
           <span>{country.name}</span>
           <span>{country.today_confirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
         </div>
+        <i className="fas fa-arrow-circle-right" />
       </div>
     </Link>
   );
