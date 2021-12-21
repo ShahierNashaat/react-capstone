@@ -8,21 +8,23 @@
 :------------------------------------------:|:---------------------------------------:
 ![screenshot](./src/images/app_screenshot.png)  |  ![screenshot](./src/images/details.png)
 
+This is a website that displaying an updated data about COVID cases in every country and in every region
+in the country if it was available.
+
 ## Built With
 
-- HTML, CSS, and JavaScript
+- HTML5, CSS3, and ES6
 - React
 - Redux
 - git
 
 ## Live Demo
 
-[Live Demo Link](https://shahiernashaat.github.io/javascript-capstone/)
+[Live Demo Link](https://covid-cases-shahier.herokuapp.com/)
 
 ## Video Description
 
-[Video Link](https://drive.google.com/file/d/1JYEPUQkCrPc-HvVkAWP98kbODtPj_L8G/view?usp=sharing)
-
+[Video Link](https://www.loom.com/share/f64005f54edd4685b3dffc6ec60e34a3)
 
 ## Getting Started
 
