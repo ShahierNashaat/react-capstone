@@ -77,6 +77,7 @@ nav .fa-cog {
   outline: none;
   border-radius: 5px;
   padding: 0 5px;
+  width: 135px;
 }
 
 .loading {
@@ -105,7 +106,7 @@ nav .fa-cog {
   display: flex;
   flex-wrap: wrap;
   background-color: var(--first-color);
-  min-height: calc(100vh - 211px);
+  min-height: calc(100vh - 205px);
 }
 
 .countries a {
@@ -186,4 +187,20 @@ nav .fa-cog {
 
 .regions div:nth-child(even) {
   background-color: #d1447a;
+}
+
+.no-data {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - (253.703px / 2));
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.filter-inputs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }

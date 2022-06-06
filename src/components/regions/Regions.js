@@ -6,11 +6,11 @@ import Header from '../Header';
 
 const Regions = () => {
   const { countryData } = useSelector((state) => state.regions);
-  const { country } = useParams();
+  const { country, date } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getRegions(country));
+    dispatch(getRegions(country, date));
   }, []);
 
   return (

@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const CountryItem = (props) => {
-  const { country, backgroundColor } = props;
+  const { country, backgroundColor, date } = props;
 
   return (
-    <Link to={`/${country.name}`} style={{ backgroundColor }}>
+    <Link to={`/${country.name}/${date}`} style={{ backgroundColor }}>
       <div className="country">
         <i className="fas fa-map-marker-alt fa-4x" />
         <div>
@@ -24,6 +24,7 @@ CountryItem.defaultProps = {
     today_confirmed: 0,
   },
   backgroundColor: '',
+  date: '',
 };
 
 CountryItem.propTypes = {
@@ -32,6 +33,7 @@ CountryItem.propTypes = {
     today_confirmed: PropTypes.number,
   }),
   backgroundColor: PropTypes.string,
+  date: PropTypes.string,
 };
 
 export default CountryItem;

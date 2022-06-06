@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import date from '../../helper/currentDate';
 import getCountries from '../../redux/thunk/countries';
 import Header from '../Header';
 import CountryItem from './CountryItem';
@@ -7,25 +8,27 @@ import CountryItem from './CountryItem';
 const Countries = () => {
   const { countries, totalTodayConfirmed } = useSelector((state) => state.countries);
   const [countriesToShow, setCountriesToShow] = useState({});
+  const [choosenDate, setChoosenDate] = useState(date());
   let backgroudColorForCountry = '#dc4782';
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCountries());
+    dispatch(getCountries(choosenDate));
   }, []);
 
-  useEffect(() => {
-    setCountriesToShow(countries);
-  }, [countries]);
+  const handleSearch = () => {
+    let searchValue = '';
+    if (document.getElementById('search-input')) {
+      searchValue = document.getElementById('search-input').value;
+    }
 
-  const handleSearch = (e) => {
-    let { value } = e.target;
     const dumpObject = {};
     Object.assign(dumpObject, countries);
-    if (value !== '') {
-      value = value[0].toUpperCase() + value.slice(1, value.length);
-      const deletedKeys = Object.keys(dumpObject).filter((key) => !key.includes(value));
+    if (searchValue !== '') {
+      searchValue = searchValue.toLowerCase();
+      const deletedKeys = Object.keys(dumpObject).filter((key) => !key.toLowerCase()
+        .includes(searchValue));
       for (let i = 0; i < deletedKeys.length; i += 1) {
         delete dumpObject[deletedKeys[i]];
       }
@@ -33,6 +36,17 @@ const Countries = () => {
     } else {
       setCountriesToShow(countries);
     }
+  };
+
+  useEffect(() => {
+    setCountriesToShow(countries);
+    handleSearch();
+  }, [countries]);
+
+  const handleDate = (e) => {
+    const changedDate = e.target.value.toString();
+    setChoosenDate(changedDate);
+    dispatch(getCountries(changedDate));
   };
 
   return (
@@ -54,7 +68,10 @@ const Countries = () => {
           </div>
           <div className="cases-by-countries">
             <p>CASES BY COUNTRIES</p>
-            <input type="text" onChange={handleSearch} placeholder="Search" />
+            <div className="filter-inputs">
+              <input type="text" id="search-input" onChange={handleSearch} placeholder="Search" />
+              <input type="date" id="date-input" onChange={handleDate} />
+            </div>
           </div>
           <div className="countries">
             {Object.keys(countriesToShow).map((country, index) => {
@@ -70,10 +87,16 @@ const Countries = () => {
                   key={country}
                   country={countries[country]}
                   backgroundColor={backgroudColorForCountry}
+                  date={choosenDate}
                 />
               );
             })}
           </div>
+        </div>
+      )}
+      {countries !== undefined && Object.keys(countries).length === 0 && (
+        <div className="no-data">
+          {`No data for ${choosenDate} yet.`}
         </div>
       )}
     </>
