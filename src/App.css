@@ -163,7 +163,6 @@ nav .fa-cog {
 .regions {
   background-color: var(--first-color);
   width: 100%;
-  height: calc(100vh - 211px);
 }
 
 .regions .no-regions {

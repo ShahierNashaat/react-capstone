@@ -33,7 +33,7 @@ const Regions = () => {
         </div>
       )}
       {countryData !== undefined && (
-        <div>
+        <div className="main-container">
           <div className="total-regions-div">
             <img src={countryData.countryInfo.flag} alt="Country Flag" className="country-flag" />
             <div>
