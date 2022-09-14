@@ -19,7 +19,7 @@ This is a website that displaying an updated data about COVID cases in every cou
 
 ## Live Demo
 
-[Live Demo Link](https://papaya-speculoos-713535.netlify.app/)
+[Live Demo Link](https://comfy-speculoos-4b255f.netlify.app/)
 
 ## Getting Started
 
