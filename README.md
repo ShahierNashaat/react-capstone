@@ -8,8 +8,7 @@
 :------------------------------------------:|:---------------------------------------:
 ![screenshot](./src/images/app_screenshot.png)  |  ![screenshot](./src/images/details.png)
 
-This is a website that displaying an updated data about COVID cases in every country and in every region
-in the country if it was available.
+This is a website that displaying an updated data about COVID cases in every country and showes the detailed information in each country.
 
 ## Built With
 
