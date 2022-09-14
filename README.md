@@ -19,11 +19,7 @@ This is a website that displaying an updated data about COVID cases in every cou
 
 ## Live Demo
 
-[Live Demo Link](https://covid-cases-shahier.herokuapp.com/)
-
-## Video Description
-
-[Video Link](https://www.loom.com/share/f64005f54edd4685b3dffc6ec60e34a3)
+[Live Demo Link](https://papaya-speculoos-713535.netlify.app/)
 
 ## Getting Started
 
