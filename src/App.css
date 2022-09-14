@@ -106,7 +106,6 @@ nav .fa-cog {
   display: flex;
   flex-wrap: wrap;
   background-color: var(--first-color);
-  min-height: calc(100vh - 205px);
 }
 
 .countries a {
@@ -203,4 +202,14 @@ nav .fa-cog {
   gap: 10px;
   flex-wrap: wrap;
   justify-content: flex-end;
+}
+
+.country-flag {
+  max-width: 45%;
+  max-height: 90%;
+}
+
+.main-container {
+  min-height: calc(100vh - 41px);
+  background-color: var(--first-color);
 }

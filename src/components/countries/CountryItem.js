@@ -2,15 +2,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const CountryItem = (props) => {
-  const { country, backgroundColor, date } = props;
+  const { country, backgroundColor } = props;
 
   return (
-    <Link to={`/${country.name}/${date}`} style={{ backgroundColor }}>
+    <Link to={`/${country.country}`} style={{ backgroundColor }}>
       <div className="country">
-        <i className="fas fa-map-marker-alt fa-4x" />
+        <img src={country.countryInfo.flag} alt="Country Flag" className="country-flag" />
         <div>
-          <span>{country.name}</span>
-          <span>{country.today_confirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
+          <span>{country.country}</span>
+          <span>{country.cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
         </div>
         <i className="fas fa-arrow-circle-right" />
       </div>
@@ -20,20 +20,24 @@ const CountryItem = (props) => {
 
 CountryItem.defaultProps = {
   country: {
-    name: '',
-    today_confirmed: 0,
+    country: '',
+    cases: 0,
+    countryInfo: {
+      flag: '',
+    },
   },
   backgroundColor: '',
-  date: '',
 };
 
 CountryItem.propTypes = {
   country: PropTypes.shape({
-    name: PropTypes.string,
-    today_confirmed: PropTypes.number,
+    country: PropTypes.string,
+    cases: PropTypes.number,
+    countryInfo: PropTypes.shape({
+      flag: PropTypes.string,
+    }),
   }),
   backgroundColor: PropTypes.string,
-  date: PropTypes.string,
 };
 
 export default CountryItem;

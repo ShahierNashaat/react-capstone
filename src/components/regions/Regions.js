@@ -6,47 +6,53 @@ import Header from '../Header';
 
 const Regions = () => {
   const { countryData } = useSelector((state) => state.regions);
-  const { country, date } = useParams();
+  const { country } = useParams();
+  let dataToShow = {
+    cases: 0,
+    todayCases: 0,
+    deaths: 0,
+    todayDeaths: 0,
+    recovered: 0,
+    todayRecovered: 0,
+    active: 0,
+    critical: 0,
+  };
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getRegions(country, date));
+    dispatch(getRegions(country));
+    dataToShow = countryData;
   }, []);
 
   return (
     <>
       <Header page="regions" />
-      {(countryData === undefined || Object.keys(countryData).indexOf(country) === -1) && (
+      {countryData === undefined && (
         <div className="loading">
           <div className="loader" />
         </div>
       )}
-      {countryData !== undefined && Object.keys(countryData).indexOf(country) !== -1 && (
+      {countryData !== undefined && (
         <div>
           <div className="total-regions-div">
-            <i className="fas fa-map-marker-alt fa-5x" />
+            <img src={countryData.countryInfo.flag} alt="Country Flag" className="country-flag" />
             <div>
               <span>{country}</span>
-              <span>{`${countryData[country].today_confirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} Cases`}</span>
+              <span>{`${countryData.cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} Cases`}</span>
             </div>
           </div>
           <div className="cases-by-regions">
-            CASES BY REGIONS
+            DETAILED INFORMATION
           </div>
           <div className="regions">
-            {countryData[country].regions.length === 0 && (
-              <div className="no-regions"><p>No Regions Available</p></div>
-            )}
-            {countryData[country].regions.length !== 0
-              && countryData[country].regions.map((region) => (
-                <div key={region.id}>
-                  <span>{region.name}</span>
-                  <span>
-                    {`${region.today_confirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} Cases `}
-                    <i className="fas fa-arrow-circle-right" />
-                  </span>
-                </div>
-              ))}
+            {Object.keys(dataToShow).map((key) => (
+              <div key={key}>
+                <span>{key}</span>
+                <span>
+                  {countryData[key].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       )}

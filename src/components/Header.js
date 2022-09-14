@@ -27,7 +27,7 @@ const Header = (props) => {
             <Link to="/"><i className="fas fa-chevron-left" /></Link>
           </div>
           <div>
-            Regions COVID Cases
+            Detailed COVID Cases
           </div>
           <div>
             <i className="fas fa-microphone" />

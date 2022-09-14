@@ -1,8 +1,8 @@
 import fetchRegions from '../../helper/fetchRegions';
 import getRegionsAction from '../actions/regions';
 
-const getRegions = (region, date) => async (dispatch) => {
-  const data = await fetchRegions(region, date);
+const getRegions = (region) => async (dispatch) => {
+  const data = await fetchRegions(region);
   dispatch(getRegionsAction(data));
 };
 
