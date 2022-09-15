@@ -4,7 +4,7 @@
 
 > Project COVID Cases for each country and its detailed information.
 
- home page                                  |  details popup
+ home page                                  |  details page
 :------------------------------------------:|:---------------------------------------:
 ![screenshot](./src/images/app_screenshot.png)  |  ![screenshot](./src/images/details.png)
 
