@@ -2,7 +2,7 @@
 
 # COVID Cases
 
-> Project COVID Cases for each country and its regions if it was available.
+> Project COVID Cases for each country and its detailed information.
 
  home page                                  |  details popup
 :------------------------------------------:|:---------------------------------------:
