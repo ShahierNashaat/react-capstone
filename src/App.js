@@ -7,8 +7,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Countries />} />
-        <Route path="/:country" element={<Regions />} />
+        <Route path="/react-capstone/" element={<Countries />} />
+        <Route path="/react-capstone/:country" element={<Regions />} />
       </Routes>
     </Router>
   );
